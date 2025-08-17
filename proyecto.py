@@ -13,3 +13,7 @@ print("POr fin")
 print("RUDY YAX")
 print("Prueba")
 print("aaaaaaaa")
+
+numero = int(input("Ingrese un numero"))
+for i in range(numero):
+    print(f"{i}")
