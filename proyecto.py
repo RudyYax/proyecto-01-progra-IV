@@ -17,3 +17,6 @@ print("aaaaaaaa")
 numero = int(input("Ingrese un numero"))
 for i in range(numero):
     print(f"{i}")
+
+for i in range(10):
+    print(1)
