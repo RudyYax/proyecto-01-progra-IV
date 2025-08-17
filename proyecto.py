@@ -28,12 +28,11 @@ class Registrar_Producto:
                             else:
                                 continue
                         break
-                    talla_producto = input("Ingresa el la talla: ")
-                    precio_producto = input("Ingresa el precio del producto: ")
+                    talla_producto = input("Ingrese el la talla: ")
+                    precio_producto = input("Ingrese el precio del producto: ")
                     self.producto[codigo] = Ingreso(codigo, talla_producto, precio_producto, cantidad)
                     print("Producto registrado correctamente.")
-                    intento = input(
-                        "Presione ENTER para continuar o ingrese 0 para registrar otra categoria")
+                    intento = input("Presione ENTER para continuar o ingrese 0 para registrar otra categoria")
                     if intento == "0":
                         break
                     else:
