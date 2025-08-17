@@ -1,6 +1,12 @@
 print("Prueba")
+print("Thomas")
+print("Rama thomas")
+print("Prueba GIT")
 print("Crear RAma rudy")
 print("RUdy")
 print("")
 print("Crear RAma rudy")
 print("Prueba 2")
+
+print("Ya funciono")
+print("POr fin")
