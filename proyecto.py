@@ -58,47 +58,59 @@ while True:
     print("3.- Buscar Producto")
     print("4.- Gestion de Productos")
     print("5.- Salir")
-    opcion = int(input("seleccione una de las opciones que desee: "))
-    while True:
-        match opcion:
-            case 1:
-                print("Registrar Producto")
-                print("A continuacion se le presenta las Categorias disponibles")
-                print("1.- Playeras")
-                print("2.- Pantalones")
-                print("3.- Sueteres")
-                print("4.- Zapatos")
-                categoria = int(input("seleccione una de las opciones o presione 0 para regresar al menú principal: "))
-                match categoria:
-                    case 0:
-                        break
-                    case 1:
-                        while True:
-                            print("Categoria Playeras")
-                            registro_Codigo.agregar_producto()
-                            break
+    try:
+        opcion = int(input("seleccione una de las opciones que desee: "))
+        while True:
+            match opcion:
+                case 1:
+                    print("Registrar Producto")
+                    print("A continuacion se le presenta las Categorias disponibles")
+                    print("1.- Playeras")
+                    print("2.- Pantalones")
+                    print("3.- Sueteres")
+                    print("4.- Zapatos")
+                    categoria = int(input("seleccione una de las opciones o presione 0 para regresar al menú principal: "))
+                    try:
+                        match categoria:
+                            case 0:
+                                break
+                            case 1:
+                                while True:
+                                    print("Categoria Playeras")
+                                    registro_Codigo.agregar_producto()
+                                    break
 
 
 
-                    case 2:
-                        print("Categoria Pantalones")
-                        registro_Codigo.agregar_producto()
-                    case 3:
-                        print("Categoria Sueteres")
-                        registro_Codigo.agregar_producto()
-                    case 4:
-                        print("Categoria Zapatos")
-                        registro_Codigo.agregar_producto()
+                            case 2:
+                                print("Categoria Pantalones")
+                                registro_Codigo.agregar_producto()
+                            case 3:
+                                print("Categoria Sueteres")
+                                registro_Codigo.agregar_producto()
+                            case 4:
+                                print("Categoria Zapatos")
+
+                                registro_Codigo.agregar_producto()
+                    except ValueError:
+                        print(f" \n Opcion no valida presione ENTER para intentar de nuevo \n")
+                        continue
 
 
 
-            case 2:
-                print("Mostrar Productos")
-                registro_Codigo.Mostrar_Productos()
-                break
-            case 3:
-                print("Buscar Producto")
-            case 4:
-                print("Gestion de Productos ")
-            case 5:
-                print("Salir")
+                case 2:
+                    print("Mostrar Productos")
+                    registro_Codigo.Mostrar_Productos()
+                    break
+                case 3:
+                    print("Buscar Producto")
+                case 4:
+                    print("Gestion de Productos ")
+                case 5:
+                    print("Salir")
+    except ValueError:
+        validar = input(f" \n Opcion no valida presione ENTER para intentar de nuevo o 0 para regresar al menu principal \n")
+        if validar == "0":
+            break
+        else:
+            continue
