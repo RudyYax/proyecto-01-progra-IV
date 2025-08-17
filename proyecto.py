@@ -51,7 +51,7 @@ class Registrar_Producto:
 registro_Codigo = Registrar_Producto()
 
 opcion = 0
-while True:
+while opcion != 5:
     print("Bienvenidos a la tienda de Ropa ")
     print("1.- Registrar Producto")
     print("2.- Mostrar Productos")
@@ -63,41 +63,37 @@ while True:
         while True:
             match opcion:
                 case 1:
-                    print("Registrar Producto")
-                    print("A continuacion se le presenta las Categorias disponibles")
-                    print("1.- Playeras")
-                    print("2.- Pantalones")
-                    print("3.- Sueteres")
-                    print("4.- Zapatos")
-                    categoria = int(input("seleccione una de las opciones o presione 0 para regresar al menú principal: "))
-                    try:
-                        match categoria:
-                            case 0:
-                                break
-                            case 1:
-                                while True:
-                                    print("Categoria Playeras")
-                                    registro_Codigo.agregar_producto()
+                        print("Registrar Producto")
+                        print("A continuacion se le presenta las Categorias disponibles")
+                        print("1.- Playeras")
+                        print("2.- Pantalones")
+                        print("3.- Sueteres")
+                        print("4.- Zapatos")
+                        try:
+                            categoria = int(input("seleccione una de las opciones o presione 0 para regresar al menú principal: "))
+                            match categoria:
+                                case 0:
                                     break
+                                case 1:
+                                    while True:
+                                        print("Categoria Playeras")
+                                        registro_Codigo.agregar_producto()
+                                        break
 
+                                case 2:
+                                    print("Categoria Pantalones")
+                                    registro_Codigo.agregar_producto()
+                                case 3:
+                                    print("Categoria Sueteres")
+                                    registro_Codigo.agregar_producto()
+                                case 4:
+                                    print("Categoria Zapatos")
 
-
-                            case 2:
-                                print("Categoria Pantalones")
-                                registro_Codigo.agregar_producto()
-                            case 3:
-                                print("Categoria Sueteres")
-                                registro_Codigo.agregar_producto()
-                            case 4:
-                                print("Categoria Zapatos")
-
-                                registro_Codigo.agregar_producto()
-                    except ValueError:
-                        print(f" \n Opcion no valida presione ENTER para intentar de nuevo \n")
-                        continue
-
-
-
+                                    registro_Codigo.agregar_producto()
+                        except ValueError:
+                            intente = input(f" \n Opcion no valida presione ENTER para intentar de nuevo categorias \n")
+                            if intente == "":
+                                continue
                 case 2:
                     print("Mostrar Productos")
                     registro_Codigo.Mostrar_Productos()
@@ -108,9 +104,11 @@ while True:
                     print("Gestion de Productos ")
                 case 5:
                     print("Salir")
+                    break
+
     except ValueError:
-        validar = input(f" \n Opcion no valida presione ENTER para intentar de nuevo o 0 para regresar al menu principal \n")
-        if validar == "0":
+        validar = input(f" \n Opcion no valida presione ENTER para intentar de nuevo o 5 para Salir del programa \n")
+        if validar == "5":
             break
         else:
             continue
