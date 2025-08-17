@@ -5,6 +5,7 @@ print("Prueba GIT")
 print("Crear RAma rudy")
 print("RUdy")
 print("")
+print("THOMas prueBA")
 print("Crear RAma rudy")
 print("Prueba 2")
 
@@ -15,6 +16,7 @@ print("Prueba")
 print("aaaaaaaa")
 
 numero = int(input("Ingrese un numero"))
+print("El nunmero ingresado no es correcto")
 for i in range(numero):
     print(f"{i}")
 
