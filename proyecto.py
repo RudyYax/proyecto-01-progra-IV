@@ -7,7 +7,7 @@ class Ingreso:
         self.stock = stock
 
     def Mostrar(self):
-        print(f"El codigo ingresado es: {self.codigo}, el nombre del producto: {self.talla}, con precio de {self.precio}, el stock disponible es de:  {self.stock} ")
+        print(f"El codigo ingresado es: {self.codigo}, la talla del producto es: {self.talla}, con precio de {self.precio}, el stock disponible es de:  {self.stock} ")
 
 class Registrar_Producto:
     def __init__(self):
@@ -183,7 +183,7 @@ while opcion != 5:
                 categorias = {1: "Playera", 2: "Pantalon", 3: "Sueter", 4: "Zapato"}
                 if opciones_case2 in categorias:
                     categoria = categorias[opciones_case2]
-                    productos_categoria = [p for p in registro_Codigo.producto.values()  if p.categoria == categoria]
+                    productos_categoria = [p for p in registro_Codigo.producto.values()  if p.categoria.lower() == categoria.lower()]
                     if not productos_categoria:
                         print(f"No hay productos en registrados en la categoria {categoria}")
                     else:
@@ -193,6 +193,7 @@ while opcion != 5:
                     print("Opcion de categoria no válida...")
 
             case 3:
+                print("------------------------------------------------------")
                 print("Buscar Producto")
                 codigo = input("Ingrese el codigo del producto a buscar: ")
                 buscador = Busqueda_Productos(registro_Codigo.producto)
