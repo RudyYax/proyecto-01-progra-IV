@@ -14,49 +14,49 @@ class Registrar_Producto:
         self.producto = {}
 
     def agregar_producto(self, categoria):
-            try:
-                cantidad = int(input("Ingrese la cantidad de producto que va almacenar: "))
-                for i in range(cantidad):
-                    print("\n--------------------------------------")
-                    print(f"Ingrese los datos del producto {i + 1}")
-                    while True:
-                        codigo = input("Ingrse el codigo del producto: ")
-                        if codigo in self.producto:
-                            print("El codigo del producto ya existe.")
-                            error = input("Presione ENTER para ingresar nuevamente o 0 para salir:")
-                            if error == "0":
-                                break
+        try:
+            cantidad = int(input("Ingrese la cantidad de producto que va almacenar: "))
+            for i in range(cantidad):
+                print("\n--------------------------------------")
+                print(f"Ingrese los datos del producto {i + 1}")
+                while True:
+                    codigo = input("Ingrse el codigo del producto: ")
+                    if codigo in self.producto:
+                        print("El codigo del producto ya existe.")
+                        error = input("Presione ENTER para ingresar nuevamente o 0 para salir:")
+                        if error == "0":
+                            break
 
-                            else:
-                                continue
-                        break
-                    while True:
-                        talla_producto = input("Ingrese el la talla: ").upper()
-                        if talla_producto in ["S", "M", "L", "XL"]:
-                            break
-                        else: 
-                            print("Solo se permite tallas S, M, L, XL ")
-                    while True:
-                        try:
-                            precio_producto = float(input("Ingrese el precio del producto: Q"))
-                            break
-                        except ValueError:
-                            print("El precio deve ser númerico... ")
-                    while True:
-                        try:
-                            stock_inicial = int(input("Ingrese le Stock inicial del producto: "))
-                            break
-                        except ValueError:
-                            print("El Stock deve ser un número entero...")
-                    self.producto[codigo] = Ingreso(codigo, categoria, talla_producto, precio_producto, stock_inicial)
-                    print("Producto registrado correctamente.")
-                    intento = input("Presione ENTER para continuar o ingrese 0 para registrar otra categoria ")
-                    if intento == "0":
+                        else:
+                            continue
+                    break
+                while True:
+                    talla_producto = input("Ingrese el la talla: ").upper()
+                    if talla_producto in ["S", "M", "L", "XL"]:
                         break
                     else:
-                        continue
-            except ValueError:
-                print("No se puedo agregar un producto")
+                        print("Solo se permite tallas S, M, L, XL ")
+                while True:
+                    try:
+                        precio_producto = float(input("Ingrese el precio del producto: Q"))
+                        break
+                    except ValueError:
+                        print("El precio deve ser númerico... ")
+                while True:
+                    try:
+                        stock_inicial = int(input("Ingrese le Stock inicial del producto: "))
+                        break
+                    except ValueError:
+                        print("El Stock deve ser un número entero...")
+                self.producto[codigo] = Ingreso(codigo, categoria, talla_producto, precio_producto, stock_inicial)
+                print("Producto registrado correctamente.")
+                intento = input("Presione ENTER para continuar o ingrese 0 para registrar otra categoria ")
+                if intento == "0":
+                    break
+                else:
+                    continue
+        except ValueError:
+            print("No se puedo agregar un producto")
 
 registro_Codigo = Registrar_Producto()
 
@@ -129,45 +129,45 @@ while opcion != 5:
 
         match opcion:
             case 1:
-                    print("--------------------------------------------------------")
-                    print("Registrar Producto")
-                    print("A continuacion se le presenta las Categorias disponibles")
-                    print("1.- Playeras")
-                    print("2.- Pantalones")
-                    print("3.- Sueteres")
-                    print("4.- Zapatos")
-                    try:
-                        categoria_op = int(input("Seleccione una de las opciones o presione 0 para regresar al menú principal: "))
-                        categoria = {1: "Playera", 2: "Pantalon", 3: "Sueter", 4: "Zapato" }
-                        match categoria_op:
-                            case 1:
-                                while True:
-                                    print("\n----------------------------")
-                                    print("Categoria Playeras")
-                                    registro_Codigo.agregar_producto(categoria[1])
-                                    break
-                            case 2:
-                                while True:
-                                    print("\n----------------------------")
-                                    print("Categoria Pantalones")
-                                    registro_Codigo.agregar_producto(categoria[2])
-                                    break
-                            case 3:
-                                while True:
-                                    print("\n----------------------------")
-                                    print("Categoria Sueteres")
-                                    registro_Codigo.agregar_producto(categoria[3])
-                                    break
-                            case 4:
-                                while True:
-                                    print("\n----------------------------")
-                                    print("Categoria Zapatos")
-                                    registro_Codigo.agregar_producto(categoria[4])
-                                    break
-                    except ValueError:
-                        intente = input(f"\n Opcion no valida presione ENTER para intentar de nuevo categorias")
-                        if intente == "":
-                            continue
+                print("--------------------------------------------------------")
+                print("Registrar Producto")
+                print("A continuacion se le presenta las Categorias disponibles")
+                print("1.- Playeras")
+                print("2.- Pantalones")
+                print("3.- Sueteres")
+                print("4.- Zapatos")
+                try:
+                    categoria_op = int(input("Seleccione una de las opciones o presione 0 para regresar al menú principal: "))
+                    categoria = {1: "Playera", 2: "Pantalon", 3: "Sueter", 4: "Zapato" }
+                    match categoria_op:
+                        case 1:
+                            while True:
+                                print("\n----------------------------")
+                                print("Categoria Playeras")
+                                registro_Codigo.agregar_producto(categoria[1])
+                                break
+                        case 2:
+                            while True:
+                                print("\n----------------------------")
+                                print("Categoria Pantalones")
+                                registro_Codigo.agregar_producto(categoria[2])
+                                break
+                        case 3:
+                            while True:
+                                print("\n----------------------------")
+                                print("Categoria Sueteres")
+                                registro_Codigo.agregar_producto(categoria[3])
+                                break
+                        case 4:
+                            while True:
+                                print("\n----------------------------")
+                                print("Categoria Zapatos")
+                                registro_Codigo.agregar_producto(categoria[4])
+                                break
+                except ValueError:
+                    intente = input(f"\n Opcion no valida presione ENTER para intentar de nuevo categorias")
+                    if intente == "":
+                        continue
             case 2:
                 opciones_case2 = 0
                 print("Mostrar Productos por Categoria")
