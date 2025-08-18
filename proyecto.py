@@ -98,6 +98,24 @@ class Ordenar_Productos:
             print(f"{i}- ", end="")
             producto.Mostrar()
 
+class Busqueda_Productos:
+    def __init__(self, productos):
+        self.productos = productos
+
+    def buscar_por_codigo(self, codigo_buscado):
+        for producto in self.productos.values():
+            if producto.codigo == codigo_buscado:
+                return  producto
+        return  None
+
+    def mostrar_resultado(self, codigo_buscado):
+        producto = self.buscar_por_codigo(codigo_buscado)
+        if producto:
+            print("Producto encontrado... ")
+            producto.Mostrar()
+        else:
+            print("Producto no encontrado")
+
 opcion = 0
 while opcion != 5:
     print("Bienvenidos a la tienda de Ropa ")
@@ -176,14 +194,16 @@ while opcion != 5:
 
             case 3:
                 print("Buscar Producto")
+                codigo = input("Ingrese el codigo del producto a buscar: ")
+                buscador = Busqueda_Productos(registro_Codigo.producto)
+                buscador.mostrar_resultado(codigo)
             case 4:
                 print("Gestion de Productos ")
             case 5:
                 print("Salir")
 
-
     except ValueError:
-        validar = input(f"\n Opcion no valida presione ENTER para intentar de nuevo o 5 para Salir del programa \n")
+        validar = input(f"\n Opcion no valida presione ENTER para intentar de nuevo o 5 para Salir del programa")
         if validar == "5":
             break
         else:
