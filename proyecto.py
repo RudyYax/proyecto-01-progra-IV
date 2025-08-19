@@ -55,10 +55,9 @@ class Registrar_Producto:
                     break
                 else:
                     continue
+
         except ValueError:
             print("No se puedo agregar un producto")
-
-registro_Codigo = Registrar_Producto()
 
 class Mostrar_Productos:
     def __init__(self, registro):
@@ -73,30 +72,6 @@ class Mostrar_Productos:
             print(f"{i}- ", end="")
             producto.Mostrar()
 
-
-class Ordenar_Productos:
-    def __init__(self, productos):
-        self.productos = productos
-
-    def quick_sort(self, lista):
-        if len(lista) <=1:
-            return lista
-        else:
-            pivote = lista[0].stock
-            mayores = [x for x in lista[1:] if x.stock > pivote]
-            iguales = [x for x in lista[1:] if x.stock == pivote]
-            menores = [x for x in lista[1:] if x.stock < pivote]
-            return self.quick_sort(mayores) + [lista[0]] + iguales + self.quick_sort(menores)
-
-    def MostrarPor_Stock(self):
-        if not self.productos:
-            print(f"No hay productos en esta categoria")
-            return
-        ordenados = self.quick_sort(self.productos)
-        print("Productos ordenados por cantidad disponible: ")
-        for i, producto in enumerate(ordenados, start=1):
-            print(f"{i}- ", end="")
-            producto.Mostrar()
 
 class Busqueda_Productos:
     def __init__(self, productos):
@@ -115,6 +90,53 @@ class Busqueda_Productos:
             producto.Mostrar()
         else:
             print("Producto no encontrado")
+
+class Ordenar_Productos:
+    def __init__(self, productos):
+        self.productos = productos
+
+    def quick_sort(self, lista):
+        if len(lista) <=1:
+            return lista
+        else:
+            pivote = lista[0].stock
+            mayores = [x for x in lista[1:] if x.stock > pivote]
+            iguales = [x for x in lista[1:] if x.stock == pivote]
+            menores = [x for x in lista[1:] if x.stock < pivote]
+            return self.quick_sort(mayores) + [lista[0]] + iguales + self.quick_sort(menores)
+
+    def Mostrar_Stock(self):
+        if not self.productos:
+            print(f"No hay productos en esta categoria")
+            return
+        ordenados = self.quick_sort(self.productos)
+        print("Productos ordenados por cantidad disponible: ")
+        for i, producto in enumerate(ordenados, start=1):
+            print(f"{i}- ", end="")
+            producto.Mostrar()
+
+class Gestion:
+    def __init__(self, registro):
+        self.registro = registro
+
+    def actualizar_stock(self, codigo, cantidad):
+        if codigo in self.registro.producto:
+            producto = self.registro.producto[codigo]
+            print(f"Stock actual del producto ({producto.codigo}): {producto.stock}")
+            producto.stock += cantidad
+            print(f"Stock actualizado correctamente. Nuevo stock: {producto.stock}")
+        else:
+            print("Producto no encontrado.")
+
+    def eliminar_producto(self):
+        codigo = input("Ingrese el código del producto a eliminar: ")
+        if codigo in self.registro.producto:
+            eliminado = self.registro.producto.pop(codigo)
+            print(f"Producto {eliminado.codigo} eliminado correctamente.")
+        else:
+            print("Producto no encontrado.")
+
+registro_Codigo = Registrar_Producto()
 
 opcion = 0
 while opcion != 5:
@@ -188,7 +210,7 @@ while opcion != 5:
                         print(f"No hay productos en registrados en la categoria {categoria}")
                     else:
                         ordenador = Ordenar_Productos(productos_categoria)
-                        ordenador.MostrarPor_Stock()
+                        ordenador.Mostrar_Stock()
                 else:
                     print("Opcion de categoria no válida...")
 
@@ -200,6 +222,21 @@ while opcion != 5:
                 buscador.mostrar_resultado(codigo)
             case 4:
                 print("Gestion de Productos ")
+                gestion = Gestion(registro_Codigo)
+                print("1.- Actualizar producto")
+                print("2.- Eliminar producto")
+                gestionar = int(input("Ingrese la opcion que desee: "))
+                match gestionar:
+                            case 1:
+                                    codigo = input("Ingrese el código del producto que desea actualizar: ")
+                                    try:
+                                        cantidad = int(input("Ingrese la cantidad que desea añadir al stock: "))
+                                        gestion.actualizar_stock(codigo, cantidad)
+                                    except ValueError:
+                                        print("La cantidad debe ser un número entero.")
+                            case 2:
+                                        gestion.eliminar_producto()
+
             case 5:
                 print("Salir")
 
